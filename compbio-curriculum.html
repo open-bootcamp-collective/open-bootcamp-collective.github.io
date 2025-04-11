@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Computational Biology Fellowship Curriculum | Open Bootcamp Collective</title>
+    <style>
+        :root {
+            --primary-blue: #1d4e89;
+            --primary-orange: #ff8c38;
+            --accent-teal: #2a9d8f;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+            --light-blue: #e3f2fd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--light-gray);
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-teal);
+        }
+        
+        main {
+            padding: 120px 0 60px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            font-size: 1.1rem;
+        }
+        
+        .curriculum-overview {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .curriculum-overview h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .note {
+            background-color: var(--light-blue);
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .note strong {
+            color: var(--primary-blue);
+        }
+        
+        .weeks-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .week-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .week-header {
+            padding: 15px 20px;
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .week-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .week-content {
+            padding: 20px;
+        }
+        
+        .week-content h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .week-content p {
+            margin-bottom: 15px;
+        }
+        
+        .topic-list {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        .topic-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-list li:before {
+            content: "•";
+            color: var(--primary-orange);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-right: 0.5em;
+        }
+        
+        .project-box {
+            background-color: var(--light-gray);
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .project-box h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-box h4 svg {
+            margin-right: 8px;
+            fill: var(--primary-orange);
+        }
+        
+        .phase-header {
+            background-color: var(--primary-orange);
+            color: white;
+            padding: 15px 20px;
+            margin: 40px 0 25px;
+            border-radius: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .resources-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .resources-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .resource-card {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .resource-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+        
+        .resource-card p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .resource-card a {
+            color: var(--primary-orange);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        
+        .resource-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin: 60px 0 20px;
+        }
+        
+        .cta-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-col h3 {
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .footer-col a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .footer-col a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .weeks-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links li {
+                margin: 8px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="logo.jpg" alt="Open Bootcamp Collective Logo">
+                    <h1>Open Bootcamp Collective</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#tracks">Tracks</a></li>
+                    <li><a href="index.html#how-it-works">How It Works</a></li>
+                    <li><a href="index.html#join">Apply</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h2>Computational Biology Fellowship Curriculum</h2>
+                <p>A collaborative learning journey exploring the intersection of biology and computational methods</p>
+            </div>
+            
+            <div class="curriculum-overview">
+                <h3>About This Curriculum</h3>
+                <p>The Computational Biology Fellowship is a 12-week collaborative learning experience designed to build practical skills in bioinformatics and computational biology. Our curriculum focuses on hands-on projects, peer learning, and real-world applications.</p>
+                
+                <div class="note">
+                    <strong>Collaborative Development:</strong> As a founding cohort, participants will actively shape this curriculum based on collective interests and expertise. This framework serves as a starting point that we'll refine together.
+                </div>
+                
+                <p>The program is structured into three phases, each building on the previous:</p>
+                <ul class="topic-list">
+                    <li><strong>Foundations (Weeks 1-4):</strong> Building core computational skills and biological context</li>
+                    <li><strong>Applications (Weeks 5-8):</strong> Applying techniques to biological problems and datasets</li>
+                    <li><strong>Projects (Weeks 9-12):</strong> Developing comprehensive projects in specialized areas</li>
+                </ul>
+            </div>
+            
+            <div class="phase-header">Phase 1: Foundations (Weeks 1-4)</div>
+            
+            <div class="weeks-container">
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Week 1: Programming Fundamentals for Biology</h3>
+                    </div>
+                    <div class="week-content">
+                        <h4>Learning Focus</h4>
+                        <p>Establishing or refreshing programming foundations with a biological perspective.</p>
+                        
+                        <h4>Core Topics</h4>
+                        <ul class="topic-list">
+                            <li>Python programming fundamentals for biological data</li>
+                            <li>Working with biological data structures</li>
+                            <li>Introduction to Jupyter notebooks for reproducible research</li>
+                            <li>Version control with Git for collaborative projects</li>
+                            <li>Navigating command line interfaces for bioinformatics tools</li>
+                        </ul>
+                        
+                        <div class="project-box">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M21 3h-6.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H3v18h18V3zm-9 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                Collaborative Projects
+                            </h4>
+                            <p>Build a sequence analysis tool to perform basic DNA/RNA/protein sequence manipulation and statistics.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Week 2: Biological Data Structures & Databases</h3>
+                    </div>
+                    <div class="week-content">
+                        <h4>Learning Focus</h4>
+                        <p>Understanding how biological data is organized, stored, and accessed.</p>
+                        
+                        <h4>Core Topics</h4>
+                        <ul class="topic-list">
+                            <li>Common biological file formats (FASTA, FASTQ, GenBank, PDB)</li>
+                            <li>Parsing and working with biological file formats</li>
+                            <li>Introduction to major biological databases (NCBI, Ensembl, UniProt)</li>
+                            <li>API access to biological data resources</li>
+                            <li>Data quality assessment and preprocessing</li>
+                        </ul>
+                        
+                        <div class="project-box">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M21 3h-6.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H3v18h18V3zm-9 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                Collaborative Projects
+                            </h4>
+                            <p>Develop a data fetching and processing pipeline that retrieves information from biological databases and prepares it for analysis.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Week 3: Sequence Alignment & Analysis</h3>
+                    </div>
+                    <div class="week-content">
+                        <h4>Learning Focus</h4>
+                        <p>Understanding the computational methods behind sequence comparison and analysis.</p>
+                        
+                        <h4>Core Topics</h4>
+                        <ul class="topic-list">
+                            <li>Principles of sequence alignment (local vs. global)</li>
+                            <li>Alignment algorithms (Needleman-Wunsch, Smith-Waterman, BLAST)</li>
+                            <li>Multiple sequence alignment techniques</li>
+                            <li>Sequence homology and evolutionary relationships</li>
+                            <li>Practical tools for sequence analysis (Biopython, BLAST)</li>
+                        </ul>
+                        
+                        <div class="project-box">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M21 3h-6.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H3v18h18V3zm-9 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                Collaborative Projects
+                            </h4>
+                            <p>Implement a basic alignment algorithm and apply it to compare sequences from related species to identify conserved regions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Week 4: Statistical Methods for Biological Data</h3>
+                    </div>
+                    <div class="week-content">
+                        <h4>Learning Focus</h4>
+                        <p>Applying appropriate statistical methods to derive insights from biological data.</p>
+                        
+                        <h4>Core Topics</h4>
+                        <ul class="topic-list">
+                            <li>Descriptive statistics for biological datasets</li>
+                            <li>Statistical hypothesis testing in biological contexts</li>
+                            <li>Multiple testing correction</li>
+                            <li>Bootstrapping and permutation tests</li>
+                            <li>Statistical packages in Python (NumPy, SciPy, statsmodels)</li>
+                        </ul>
+                        
+                        <div class="project-box">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M21 3h-6.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H3v18h18V3zm-9 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                Collaborative Projects
+                            </h4>
+                            <p>Analyze a biological dataset to identify statistically significant patterns and present findings with appropriate visualizations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="phase-header">Phase 2: Applications (Weeks 5-8)</div>
+            
+            <div class="weeks-container">
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Week 5: Genomics & Next-Generation Sequencing</h3>
+                    </div>
+                    <div class="week-content">
+                        <h4>Learning Focus</h4>
+                        <p>Working with modern genomic data and sequencing technologies.</p>
+                        
+                        <h4>Core Topics</h4>
+                        <ul class="topic-list">
+                            <li>Next-generation sequencing technologies and data characteristics</li>
+                            <li>Genomic data processing pipelines</li>
+                            <li>Variant calling and annotation</li>
+                            <li>Genome assembly principles</li>
+                            <li>Working with genomic intervals and features</li>
+                        </ul>
+                        
+                        <div class="project-box">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M21 3h-6.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H3v18h18V3zm-9 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                Collaborative Projects
+                            </h4>
+                            <p>Implement a simple variant calling pipeline from raw sequencing data and annotate the identified variants.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Week 6: Transcriptomics & RNA-Seq Analysis</h3>
+                    </div>
+                    <div class="week-content">
+                        <h4>Learning Focus</h4>
+                        <p>Analyzing gene expression data from RNA sequencing experiments.</p>
+                        
+                        <h4>Core Topics</h4>
+                        <ul class="topic-list">
+                            <li>RNA-Seq experimental design and data characteristics</li>
+                            <li>Alignment and quantification of RNA-Seq reads</li>
+                            <li>Differential expression analysis</li>
+                            <li>Functional enrichment analysis</li>
+                            <li>Visualizing transcriptomic data</li>
+                        </ul>
+                        
+                        <div class="project-box">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M21 3h-6.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H3v18h18V3zm-9 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                Collaborative Projects
+                            </h4>
+                            <p>Perform differential expression analysis on an RNA-Seq dataset and interpret the biological significance of the results.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Week 7: Protein Structure & Molecular Modeling</h3>
+                    </div>
+                    <div class="week-content">
+                        <h4>Learning Focus</h4>
+                        <p>Understanding computational approaches to protein structure analysis and prediction.</p>
+                        
+                        <h4>Core Topics</h4>
+                        <ul class="topic-list">
+                            <li>Principles of protein structure (primary to quaternary)</li>
+                            <li>Protein structure visualization and analysis</li>
+                            <li>Introduction to molecular dynamics</li>
+                            <li>Protein-protein and protein-ligand interactions</li>
+                            <li>Structure prediction methods and tools</li>
+                        </ul>
+                        
+                        <div class="project-box">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M21 3h-6.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H3v18h18V3zm-9 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                Collaborative Projects
+                            </h4>
+                            <p>Analyze protein structures to identify binding sites and compare structural features across protein families.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <h3>Week 8: Machine Learning for Biological Data</h3>
+                    </div>
+                    <div class="week-content">
+                        <h4>Learning Focus</h4>
+                        <p>Applying machine learning techniques to extract patterns from complex biological datasets.</p>
+                        
+                        <h4>Core Topics</h4>
+                        <ul class="topic-list">
+                            <li>Machine learning fundamentals for biological applications</li>
+                            <li>Supervised learning for classification and regression problems</li>
+                            <li>Unsupervised learning for clustering and dimensionality reduction</li>
+                            <li>Feature selection and engineering for biological data</li>
+                            <li>Model evaluation and interpretation in biological contexts</li>
+                        </ul>
+                        
+                        <div class="project-box">
+                            <h4>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M21 3h-6.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H3v18h18V3zm-9 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                Collaborative Projects
+                            </h4>
+                            <p>Develop a machine learning model to predict a biological property or outcome from molecular or genomic data.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="phase-header">Phase 3: Projects (Weeks 9-12)</div>
+            
+            <div class="curriculum-overview">
+                <h3>Capstone Projects</h3>
+                <p>In the final phase, participants will work on comprehensive projects that integrate multiple techniques and address complex biological questions. Projects will be developed based on participant interests and may include:</p>
+                
+                <ul class="topic-list">
+                    <li><strong>Genomic Analysis Pipeline:</strong> Build an end-to-end pipeline for analyzing genomic data from raw sequences to biological interpretation.</li>
+                    <li><strong>Protein Engineering Tool:</strong> Develop a tool to predict the effects of mutations on protein structure and function.</li>
+                    <li><strong>Gene Expression Classifier:</strong> Create a machine learning system to classify disease states based on gene expression profiles.</li>
+                    <li><strong>Biological Network Analysis:</strong> Implement methods to analyze and visualize biological networks such as protein-protein interactions or gene regulatory networks.</li>
+                    <li><strong>Drug Discovery Application:</strong> Build tools for virtual screening or target identification for drug discovery.</li>
+                </ul>
+                
+                <div class="note">
+                    <strong>Project Development:</strong> Weeks 9-12 will follow a structured approach including project planning, implementation, iteration based on peer feedback, and final presentation. Fellows will both lead their own projects and contribute to others.
+                </div>
+            </div>
+            
+            <div class="resources-section">
+                <h3>Learning Resources</h3>
+                <p>The following resources will support our learning journey. As a collaborative community, we'll continuously expand this collection.</p>
+                
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h4>Programming & Data Science</h4>
+                        <p>Python programming fundamentals, data manipulation, and scientific computing libraries.</p>
+                        <ul class="topic-list">
+                            <li>Python for Data Science</li>
+                            <li>NumPy, Pandas, Matplotlib</li>
+                            <li>Jupyter Notebooks</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h4>Bioinformatics Tools</h4>
+                        <p>Specialized libraries and frameworks for biological data analysis.</p>
+                        <ul class="topic-list">
+                            <li>Biopython</li>
+                            <li>Scikit-bio</li>
+                            <li>BioConductor</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h4>Open Datasets</h4>
+                        <p>Publicly available biological datasets for learning and project development.</p>
+                        <ul class="topic-list">
+                            <li>The Cancer Genome Atlas</li>
+                            <li>1000 Genomes Project</li>
+                            <li>Gene Expression Omnibus</li>
+                        </ul
